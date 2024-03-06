@@ -1,3 +1,4 @@
+require('dotenv').config();
 const User = require('../models/user');
 const { isValidObjectId } = require("mongoose")
 
@@ -5,6 +6,7 @@ const bcrypt = require('bcrypt');
 const fs = require('fs')
 const JWT = require("jsonwebtoken");
 const secret = "Secret$123";
+const pwd = process.env.SMTP_PWD
 
 const { validationResult } = require('express-validator');
 
@@ -21,7 +23,7 @@ function sendEmail(emailAddress, userId) {
                 secure: true,
                 auth: {
                     user: "rajatch131@gmail.com",
-                    pass: "hdvielkojosyzlui",
+                    pass: pwd,
                 },
             });
             // Create a mail object
